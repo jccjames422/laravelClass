@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', PostsController::class);
+Route::get('post/{id}/{name}/{password}', [PostsController::class, 'show_post']);
+
+
+Route::get('/contact', [PostsController::class, 'contact']);
