@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostsController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('posts', PostsController::class);
-Route::get('post/{id}/{name}/{password}', [PostsController::class, 'show_post']);
+Route::get('/insert', function () {
+   DB::insert('insert into posts(title, content) values(?, ?)',
+       [
+           'PHP with Laravel',
+           'Laravel is the best that has happened to PHP'
+       ]);
+});
 
-
-Route::get('/contact', [PostsController::class, 'contact']);
+//Route::resource('posts', PostsController::class);
+//Route::get('post/{id}/{name}/{password}', [PostsController::class, 'show_post']);
+//Route::get('/contact', [PostsController::class, 'contact']);
